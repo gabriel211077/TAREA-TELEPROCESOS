@@ -2,21 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea: Introducción al Teleproceso</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; }
-        header { background: #004a99; color: white; padding: 1rem; text-align: center; }
-        section { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
-        .highlight { color: #004a99; font-weight: bold; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #e2e8f0; background-color: #0f172a; max-width: 900px; margin: auto; padding: 40px; }
+        header { border-bottom: 2px solid #38bdf8; margin-bottom: 30px; padding-bottom: 10px; text-align: center; }
+        h1 { color: #38bdf8; }
+        h2 { color: #7dd3fc; border-left: 5px solid #38bdf8; padding-left: 15px; margin-top: 40px; }
+        .card { background: #1e293b; padding: 20px; border-radius: 10px; border: 1px solid #334155; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #1e293b; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background-color: #334155; color: #38bdf8; }
+        .highlight { color: #fbbf24; font-weight: bold; }
+        footer { margin-top: 50px; text-align: center; font-size: 0.8em; color: #94a3b8; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Introducción al Teleproceso</h1>
+        <h1>Fundamentos del Teleproceso</h1>
+        <p>Asignación Académica - Introducción a la Transmisión de Datos</p>
     </header>
-    <section>
-        <h2>¿Qué es?</h2>
-        <p>Procesamiento de datos a distancia mediante redes de comunicación.</p>
+
+    <section class="card">
+        <h2>1. ¿Qué es el Teleproceso?</h2>
+        <p>Es la integración de la <span class="highlight">informática</span> y las <span class="highlight">telecomunicaciones</span> para permitir el procesamiento de datos a distancia. Permite que una unidad central de proceso (Host) se comunique con terminales remotos de manera eficiente.</p>
     </section>
+
+    <section>
+        <h2>2. Componentes del Sistema</h2>
+        <table>
+            <tr>
+                <th>Componente</th>
+                <th>Descripción Técnica</th>
+            </tr>
+            <tr>
+                <td>DTE (Terminal)</td>
+                <td>Equipo que genera la información (Emisor/Receptor).</td>
+            </tr>
+            <tr>
+                <td>DCE (Módem)</td>
+                <td>Equipo que adapta la señal para el canal de transmisión.</td>
+            </tr>
+            <tr>
+                <td>Línea/Canal</td>
+                <td>Medio físico (fibra, satélite, cable) por donde viajan los bits.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="card">
+        <h2>3. Modos de Transmisión</h2>
+        <ul>
+            <li><strong>Simplex:</strong> Transmisión en un solo sentido (ej. Radio).</li>
+            <li><strong>Half-Duplex:</strong> Ambos sentidos, pero no a la vez (ej. Walkie-talkie).</li>
+            <li><strong>Full-Duplex:</strong> Bidireccional simultáneo (ej. Navegación Web).</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Esta página demuestra un sistema de teleproceso real mediante arquitectura Cliente-Servidor.</p>
+    </footer>
 </body>
 </html>
