@@ -2,445 +2,353 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Teleproceso & Redes - Revista Digital UNAM 1979</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki: Canales de Transmisión y Modelos de Red</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f4f6f7;
+            --sidebar-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            background-color: #2c2c2c;
-            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
+            line-height: 1.6;
         }
 
-        /* Contenedor de la revista */
-        .magazine {
+        /* Barra lateral de navegación */
+        nav {
+            width: 280px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+        }
+
+        nav h1 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            display: block;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #eef2f7;
+            color: var(--secondary-color);
+            padding-left: 15px;
+        }
+
+        /* Contenido Principal */
+        main {
+            margin-left: 280px;
+            padding: 40px;
             max-width: 1000px;
             width: 100%;
-            background-color: #f5f0e8;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-radius: 8px;
-            overflow: hidden;
         }
 
-        /* Cada página es una sección */
-        .page {
-            padding: 50px 40px;
-            border-bottom: 1px solid #ddd;
-            background-color: #fffef7;
-            page-break-after: always;
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
 
-        /* Portada especial */
-        .cover {
-            background: linear-gradient(135deg, #1a3c5e 0%, #0e2a44 100%);
-            color: white;
-            text-align: center;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: none;
+        header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
         }
 
-        .cover h1 {
-            font-size: 58px;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: 800;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-top: 5px;
         }
 
-        .cover h2 {
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 30px;
-            border-top: 2px solid #ffcc44;
-            border-bottom: 2px solid #ffcc44;
-            display: inline-block;
-            padding: 10px 20px;
-        }
-
-        .cover p {
-            font-size: 18px;
-            margin-top: 40px;
-            font-style: italic;
-            color: #dddddd;
-        }
-
-        .cover .date {
-            margin-top: 60px;
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        /* Títulos de sección */
-        .section-title {
-            font-size: 32px;
-            color: #1a3c5e;
-            border-left: 6px solid #ff9900;
-            padding-left: 20px;
-            margin-bottom: 30px;
-            margin-top: 20px;
-        }
-
-        .subsection-title {
-            font-size: 24px;
-            color: #2c5a7a;
-            margin: 20px 0 15px 0;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
-
-        /* Carta al lector */
-        .letter {
-            background-color: #f9f3e0;
+        section {
+            background: #ffffff;
             padding: 30px;
-            border-radius: 20px;
-            font-style: italic;
-            border-left: 8px solid #ff9900;
-            margin: 20px 0;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
         }
 
-        .letter p {
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
             margin-bottom: 15px;
+            position: relative;
         }
 
-        /* Tablas */
-        .tech-table {
+        h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Tablas comparativas */
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin: 25px 0;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .tech-table th, .tech-table td {
-            border: 1px solid #ccc;
-            padding: 12px;
+        th, td {
+            padding: 12px 15px;
             text-align: left;
-            vertical-align: top;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .tech-table th {
-            background-color: #1a3c5e;
+        th {
+            background-color: var(--primary-color);
             color: white;
         }
 
-        .tech-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tr:nth-child(even) {
+            background-color: #f8fafc;
         }
 
-        /* Recuadros y fórmulas */
-        .formula-box {
-            background-color: #e8f0f8;
-            padding: 20px;
-            border-radius: 12px;
-            font-family: monospace;
-            font-size: 20px;
-            text-align: center;
-            margin: 20px 0;
-            border: 1px solid #b0c4de;
-        }
-
+        /* Cuadros de notas destacadas */
         .info-box {
-            background-color: #eef4ff;
-            border-left: 5px solid #2c7ab1;
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--secondary-color);
             padding: 15px;
             margin: 20px 0;
-            border-radius: 8px;
+            border-radius: 0 4px 4px 0;
         }
 
-        /* Anuncios */
-        .ads-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .ad-card {
-            background: white;
-            border: 2px solid #333;
+        footer {
+            margin-top: 50px;
+            text-align: center;
             padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 8px 8px 0 #aaa;
-            transition: transform 0.2s;
+            color: #95a5a6;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
         }
 
-        .ad-card:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 12px 12px 0 #888;
-        }
-
-        .ad-card h3 {
-            background: #ffcc44;
-            display: inline-block;
-            padding: 5px 12px;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .ad-card .price {
-            font-weight: bold;
-            color: #b22222;
-            margin-top: 15px;
-        }
-
-        /* Contraportada */
-        .backcover {
-            background: #1e2f3a;
-            color: #eee;
-            text-align: center;
-            border-bottom: none;
-        }
-
-        .backcover h3 {
-            color: #ffcc44;
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
-
-        .backcover p {
-            font-size: 18px;
-            max-width: 80%;
-            margin: 20px auto;
-            line-height: 1.5;
-        }
-
-        /* Footer de página */
-        .page-number {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 12px;
-            color: #888;
-            border-top: 1px dashed #ccc;
-            padding-top: 20px;
-        }
-
-        /* responsive */
-        @media (max-width: 700px) {
-            .page {
-                padding: 30px 20px;
+        /* Adaptabilidad para móviles */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
             }
-            .cover h1 {
-                font-size: 38px;
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
             }
-            .section-title {
-                font-size: 26px;
+            main {
+                margin-left: 0;
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-<div class="magazine">
-    
-    <!-- PORTADA -->
-    <div class="page cover">
-        <h1>📡 TELEPROCESO<br>& REDES</h1>
-        <h2>Una mirada a los fundamentos de la comunicación digital</h2>
-        <p>Basado en la tesis de <strong>Andrés González Aguilar</strong> y <strong>Gabriel C. Camarena García</strong><br>
-        Facultad de Ingeniería, UNAM – 1979</p>
-        <div class="date">“La información exacta y oportuna en todos los niveles de dirección”</div>
-    </div>
 
-    <!-- ÍNDICE -->
-    <div class="page">
-        <div class="section-title">📖 ÍNDICE</div>
-        <table class="tech-table">
-            <tr><th>Sección</th><th>Página</th></tr>
-            <tr><td>Carta al Lector</td><td>2</td></tr>
-            <tr><td>1. El Nacimiento del Teleproceso</td><td>3</td></tr>
-            <tr><td>2. Canales Telefónicos y Ancho de Banda</td><td>5</td></tr>
-            <tr><td>3. Modems: El Puente Digital-Analógico</td><td>8</td></tr>
-            <tr><td>4. Medios de Transmisión: Del par de hilos al láser</td><td>12</td></tr>
-            <tr><td>5. Ruido y Distorsiones</td><td>15</td></tr>
-            <tr><td>6. Integración de Redes y Protocolos</td><td>18</td></tr>
-            <tr><td>7. El futuro visto en 1979</td><td>21</td></tr>
-            <tr><td>Anuncios Publicitarios</td><td>23</td></tr>
-            <tr><td>Contraportada</td><td>24</td></tr>
-        </table>
-        <div class="page-number">Página 1</div>
-    </div>
-
-    <!-- CARTA AL LECTOR -->
-    <div class="page">
-        <div class="section-title">✉️ CARTA AL LECTOR</div>
-        <div class="letter">
-            <p><strong>45 años después… los mismos principios</strong></p>
-            <p>Estimado lector:</p>
-            <p>La tesis que da vida a esta revista fue escrita en 1979, cuando la transmisión digital empezaba a disputar el terreno a la voz analógica. Sus autores, González Aguilar y Camarena García, anticiparon una tendencia que hoy damos por sentada: la necesidad de información exacta y oportuna en todos los niveles de una organización.</p>
-            <p>En estas páginas recuperamos sus conceptos fundamentales: desde el ancho de banda de un canal telefónico hasta los protocolos de comunicación y el diseño de redes. Verás que, aunque la tecnología ha avanzado (hoy hablamos de fibra óptica, 5G y la nube), los problemas de atenuación, ruido, sincronía y topología siguen siendo los mismos.</p>
-            <p>Disfrute de este viaje a los cimientos de la teleinformática.</p>
-            <p>— <strong>Comité editorial, "Teleproceso & Redes"</strong></p>
-        </div>
-        <div class="page-number">Página 2</div>
-    </div>
-
-    <!-- TEMA 1: NACIMIENTO DEL TELEPROCESO -->
-    <div class="page">
-        <div class="section-title">📡 1. EL NACIMIENTO DEL TELEPROCESO</div>
-        <div class="info-box">
-            <strong>Concepto clave:</strong> “Sistemas complejos para el intercambio de información digital entre personas, personas-máquinas y máquinas”.
-        </div>
-        <ul style="margin-left: 30px; line-height: 1.6;">
-            <li>En los años 70, la descentralización obligó a crear <strong>“centros nerviosos”</strong> dispersos.</li>
-            <li>La red de comunicaciones debía asegurar <strong>exactitud y confiabilidad ininterrumpida</strong>.</li>
-            <li><strong>Tres subsistemas:</strong>
-                <ol style="margin-top: 8px;">
-                    <li>Computadores de almacenamiento/proceso</li>
-                    <li>Red de comunicaciones (líneas, microondas, modems)</li>
-                    <li>Terminales de usuario</li>
-                </ol>
-            </li>
-        </ul>
-        <div class="info-box">
-            📌 <strong>Dato curioso (1979):</strong> Con un minicomputador económico y modulación por pulsos era posible la transmisión por paquetes.
-        </div>
-        <div class="page-number">Página 3</div>
-    </div>
-
-    <!-- TEMA 2: CANALES TELEFÓNICOS Y ANCHO DE BANDA -->
-    <div class="page">
-        <div class="section-title">📞 2. CANALES TELEFÓNICOS Y ANCHO DE BANDA</div>
-        <table class="tech-table">
-            <tr><th>Tipo de canal</th><th>Velocidad típica</th><th>Uso principal</th></tr>
-            <tr><td>Banda angosta</td><td>≤ 300 bps</td><td>Teleimpresores</td></tr>
-            <tr><td>Grado de voz</td><td>2400 – 4800 bps</td><td>Líneas privadas (LP's)</td></tr>
-            <tr><td>Banda ancha</td><td>Mbps</td><td>Redes de computadoras</td></tr>
-        </table>
-        <div class="formula-box">
-            📐 Ecuación de Shannon: <strong>C = B · log₂(1 + S/N)</strong><br>
-            <span style="font-size: 14px;">C = capacidad (bps), B = ancho de banda (Hz), S/N = relación señal/ruido</span>
-        </div>
-        <div class="info-box">
-            👂 El oído humano detecta de 30 Hz a 20 kHz, pero los canales telefónicos se limitaron a 300–3300 Hz para hacer inteligible la voz.
-        </div>
-        <div class="page-number">Página 5</div>
-    </div>
-
-    <!-- TEMA 3: MODEMS -->
-    <div class="page">
-        <div class="section-title">📟 3. MODEMS: EL PUENTE DIGITAL-ANALÓGICO</div>
-        <p><strong>Definición:</strong> Modulador/DEModulador (data set).</p>
+    <nav>
+        <h1>TelecoWiki</h1>
         <ul>
-            <li><strong>Funciones:</strong> Conversión binario ↔ analógica, sincronización, equalización.</li>
-            <li><strong>Tipos de modulación:</strong>
-                <ul>
-                    <li><strong>FSK:</strong> baja velocidad, simple.</li>
-                    <li><strong>DPSK:</strong> 2400 bps con 4 fases.</li>
-                    <li><strong>QAM:</strong> hasta 9600 bps combinando fase y amplitud.</li>
-                </ul>
-            </li>
+            <li><a href="#introduccion">1. Canal de Transmisión</a></li>
+            <li><a href="#medios">2. Medios de Transmisión</a></li>
+            <li><a href="#modelo-osi">3. Modelo OSI</a></li>
+            <li><a href="#modelo-tcpip">4. Modelo TCP/IP</a></li>
+            <li><a href="#comparativa">5. OSI vs TCP/IP</a></li>
+            <li><a href="#referencias">6. Referencias</a></li>
         </ul>
-        <div class="info-box">
-            🔌 <strong>Interfaz EIA RS-232-C (1979):</strong> 25 pines, cable máx. 50 pies. Señales clave: TD (pin2), RD (pin3), RTS (pin4), CTS (pin5).
-        </div>
-        <div class="page-number">Página 8</div>
-    </div>
+    </nav>
 
-    <!-- TEMA 4: MEDIOS DE TRANSMISIÓN -->
-    <div class="page">
-        <div class="section-title">🌐 4. MEDIOS DE TRANSMISIÓN (evolución hasta 1979)</div>
-        <table class="tech-table">
-            <tr><th>Medio</th><th>Capacidad</th><th>Problema típico</th></tr>
-            <tr><td>Par de hilos descubiertos</td><td>1 canal voz</td><td>Inducción, capacitancia</td></tr>
-            <tr><td>Cable coaxial</td><td>3600 canales voz</td><td>Atenuación (repetidores cada 3 km)</td></tr>
-            <tr><td>Microondas</td><td>Gran volumen</td><td>Visibilidad directa entre antenas</td></tr>
-            <tr><td>Satélite</td><td>Buena calidad</td><td>Tiempo de propagación</td></tr>
-            <tr><td>Guía de onda / Láser</td><td>Experimental</td><td>Costo y modulación</td></tr>
-        </table>
-        <div class="info-box">
-            🚢 El cable submarino (720 canales) tenía “futuro incierto frente a los satélites”.
-        </div>
-        <div class="page-number">Página 12</div>
-    </div>
+    <main>
+        <header>
+            <h2>Canales de Transmisión</h2>
+            <p>Fundamentos de telecomunicaciones, Modelo OSI y Arquitectura TCP/IP</p>
+        </header>
 
-    <!-- TEMA 5: RUIDO Y DISTORSIONES -->
-    <div class="page">
-        <div class="section-title">⚠️ 5. RUIDO Y DISTORSIONES: ENEMIGOS DE LOS DATOS</div>
-        <ul>
-            <li><strong>Atenuación constante:</strong> caída de nivel con la distancia.</li>
-            <li><strong>Retraso de envolvente:</strong> distintas frecuencias llegan en diferente tiempo (se corrige con equalizadores).</li>
-            <li><strong>Ruido blanco (gaussiano):</strong> siempre presente, tolerable con buena relación S/N.</li>
-            <li><strong>Ruido impulsivo:</strong> el más dañino, causa ráfagas de error. Difícil de detectar.</li>
-        </ul>
-        <div class="info-box">
-            🧠 Los autores señalaban: “El ruido impulsivo puede afectar pares de bits e impedir su detección incluso con chequeo de paridad”.
-        </div>
-        <div class="page-number">Página 15</div>
-    </div>
-
-    <!-- TEMA 6: INTEGRACIÓN DE REDES Y PROTOCOLOS -->
-    <div class="page">
-        <div class="section-title">🔁 6. INTEGRACIÓN DE REDES Y PROTOCOLOS</div>
-        <p><strong>Tipos de redes de teleproceso:</strong> enlace punto a punto, multipunto, conmutadas.</p>
-        <p><strong>Protocolos:</strong> funciones de control de flujo, detección de errores, sincronización. En 1979 ya se hablaba de <strong>estratificación (layering)</strong> y estándares internacionales.</p>
-        <div class="info-box">
-            💾 <strong>Concentradores y multiplexores:</strong> permitían compartir líneas y reducir costos, una base para las redes modernas.
-        </div>
-        <div class="page-number">Página 18</div>
-    </div>
-
-    <!-- TEMA 7: EL FUTURO VISTO EN 1979 -->
-    <div class="page">
-        <div class="section-title">🚀 7. EL FUTURO VISTO EN 1979</div>
-        <p>“El gobierno mexicano está proporcionando las facilidades para el desarrollo de una red nacional de comunicaciones”.<br>
-        El crecimiento se proyectaba en: <strong>microondas, satélites, y experimentación con láseres</strong>.</p>
-        <div class="formula-box">
-            🌍 Visión: Sistemas de teleinformática para reservaciones, banca, educación, manufactura y transporte aéreo.
-        </div>
-        <div class="page-number">Página 21</div>
-    </div>
-
-    <!-- ANUNCIOS PUBLICITARIOS (estilo retro) -->
-    <div class="page">
-        <div class="section-title">📢 ANUNCIOS PUBLICITARIOS – Tecnología 1979</div>
-        <div class="ads-container">
-            <div class="ad-card">
-                <h3>MODEM “DataSpeed 2400”</h3>
-                <p>✅ 2400 bps sobre línea telefónica<br>✅ Equalización automática<br>✅ Interfaz EIA RS-232-C</p>
-                <div class="price">Confiabilidad en cada bit</div>
+        <section id="introduccion">
+            <h3>1. ¿Qué es un Canal de Transmisión?</h3>
+            <p>El <strong>canal de transmisión</strong> es el medio físico o inalámbrico a través del cual viaja la información (en forma de señales electromagnéticas, ópticas o de radio) desde un emisor hasta un receptor en un sistema de telecomunicaciones.</p>
+            <div class="info-box">
+                <strong>Nota teórica:</strong> La capacidad de un canal para transportar información depende de su ancho de banda (medido en Hertz o bits por segundo) y de la relación señal/ruido, según lo establecido por el Teorema de Shannon-Hartley.
             </div>
-            <div class="ad-card">
-                <h3>Multiplexor “MUX-4”</h3>
-                <p>🔁 Combina 4 canales asincrónicos en uno sincrónico<br>📉 Reduce costos de línea</p>
-                <div class="price">Ideal para bancos y aerolíneas</div>
-            </div>
-            <div class="ad-card">
-                <h3>Terminal Inteligente “VISUAL 550”</h3>
-                <p>🖥️ Despliegue 24x80<br>📡 Transmisión en lote remoto</p>
-                <div class="price">Lleve el mainframe a su escritorio</div>
-            </div>
-        </div>
-        <div class="page-number">Página 23</div>
-    </div>
+        </section>
 
-    <!-- CONTRAPORTADA -->
-    <div class="page backcover">
-        <h3>📡 CONTRAPORTADA</h3>
-        <p><em>"El diseño de una red de teleinformática debe considerar el flujo de información, la localización de usuarios, los tiempos de respuesta y la confiabilidad, todo a mínimo costo."</em><br>
-        — <strong>González & Camarena, 1979</strong></p>
-        <p>Basado en la tesis de la Facultad de Ingeniería, UNAM.<br>
-        Reproducción con fines educativos e informativos.<br>
-        © Universidad Nacional Autónoma de México.</p>
-        <div style="margin-top: 40px; font-size: 14px;">Revista digital "Teleproceso & Redes" - Edición conmemorativa</div>
-        <div class="page-number">Página 24</div>
-    </div>
+        <section id="medios">
+            <h3>2. Tipos de Medios de Transmisión</h3>
+            <p>Los canales se dividen principalmente en dos grandes grupos dependiendo de su naturaleza física:</p>
+            
+            <h4>A. Medios Guiados (Alámbricos)</h4>
+            <p>La señal viaja confinada dentro de un camino físico sólido.</p>
+            <ul>
+                <li><strong>Cable de Par Trenzado (UTP/STP):</strong> Utilizado en redes LAN locales (Ethernet). Reducen la interferencia gracias al trenzado de sus hilos.</li>
+                <li><strong>Cable Coaxial:</strong> Con un núcleo de cobre y blindaje metálico, usado históricamente en redes de TV por cable y banda ancha.</li>
+                <li><strong>Fibra Óptica:</strong> Transmite pulsos de luz a través de un filamento de vidrio. Ofrece las velocidades más altas y es inmune a la interferencia electromagnética.</li>
+            </ul>
 
-</div>
-<div style="text-align: center; margin-top: 20px; font-family: monospace; color: #aaa;">
-    Revista generada a partir de la tesis UNAM · 1979 · Diseño para GitHub Pages
-</div>
+            <h4>B. Medios No Guiados (Inalámbricos)</h4>
+            <p>La señal se propaga libremente a través del espacio, el aire o el vacío.</p>
+            <ul>
+                <li><strong>Ondas de Radio:</strong> Omnidireccionales, ideales para Wi-Fi, Bluetooth y redes móviles.</li>
+                <li><strong>Microondas:</strong> Transmisiones direccionales en línea de vista (terrestres o satelitales).</li>
+                <li><strong>Infrarrojos:</strong> Para distancias muy cortas y sin obstáculos (controles remotos).</li>
+            </ul>
+        </section>
+
+        <section id="modelo-osi">
+            <h3>3. El Modelo OSI (Open Systems Interconnection)</h3>
+            <p>Creado por la ISO en 1984, el Modelo OSI es un marco conceptual de <strong>7 capas</strong> que estandariza las funciones de un sistema de telecomunicaciones para que diferentes sistemas puedan comunicarse sin importar su fabricante.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nivel / Capa</th>
+                        <th>Función Principal</th>
+                        <th>Unidad de Datos (PDU)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>7. Aplicación</strong></td>
+                        <td>Interfaz de usuario y servicios de red (HTTP, FTP, SMTP).</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Presentación</strong></td>
+                        <td>Traducción, cifrado y compresión de datos.</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Sesión</strong></td>
+                        <td>Establece, gestiona y finaliza las conexiones entre aplicaciones.</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Transporte</strong></td>
+                        <td>Transferencia libre de errores de extremo a extremo (TCP, UDP).</td>
+                        <td>Segmento / Datagrama</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Red</strong></td>
+                        <td>Direccionamiento lógico y enrutamiento de paquetes (IP).</td>
+                        <td>Paquete</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Enlace de Datos</strong></td>
+                        <td>Direccionamiento físico (MAC), detección de errores en el medio.</td>
+                        <td>Trama</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1. Física</strong></td>
+                        <td>Transmisión binaria y especificaciones del canal físico.</td>
+                        <td>Bits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="modelo-tcpip">
+            <h3>4. El Modelo TCP/IP</h3>
+            <p>A diferencia del modelo OSI, el <strong>Modelo TCP/IP</strong> es una arquitectura práctica desarrollada originalmente por el Departamento de Defensa de EE. UU. Es el modelo real sobre el cual se construyó y opera la Internet actual.</p>
+            <p>Suele estructurarse en <strong>4 capas esenciales</strong>, que agrupan las funciones del modelo conceptual de la ISO:</p>
+            <ul>
+                <li><strong>Capa de Aplicación:</strong> Incorpora las capas 5, 6 y 7 de OSI. Aquí operan los protocolos con los que interactúa el software de usuario.</li>
+                <li><strong>Capa de Transporte:</strong> Regula el flujo de datos. Define cómo viajan los segmentos de manera confiable (TCP) o rápida (UDP).</li>
+                <li><strong>Capa de Internet:</strong> Equivalente a la capa de red de OSI. Se encarga de poner etiquetas origen y destino mediante direcciones IP para que los routers sepan a dónde enviar la información.</li>
+                <li><strong>Capa de Acceso a la Red:</strong> Une las capas física y de enlace de OSI. Maneja el hardware físico (tarjetas de red, cables) y los protocolos de hardware como Ethernet o Wi-Fi.</li>
+            </ul>
+        </section>
+
+        <section id="comparativa">
+            <h3>5. Comparativa Directa: OSI vs. TCP/IP</h3>
+            <p>Aunque ambos modelos sirven para entender cómo viaja la información por un canal de transmisión, tienen enfoques diferentes:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Modelo OSI</th>
+                        <th>Modelo TCP/IP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Naturaleza</strong></td>
+                        <td>Teórico y conceptual. Excelente para aprender.</td>
+                        <td>Práctico y funcional. Es el estándar de Internet.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Número de Capas</strong></td>
+                        <td>7 capas.</td>
+                        <td>4 capas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desarrollo</strong></td>
+                        <td>Los protocolos se diseñaron después del modelo.</td>
+                        <td>El modelo se diseñó después de los protocolos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Garantía de Entrega</strong></td>
+                        <td>Estricto control de flujo en múltiples capas.</td>
+                        <td>Delega la fiabilidad principalmente a la capa de transporte.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="referencias">
+            <h3>6. Referencias y Lecturas Recomendadas</h3>
+            <p>Para profundizar en el estudio de redes y canales de comunicación, se sugiere consultar:</p>
+            <ul>
+                <li>Tanenbaum, A. S. (2012). <em>Redes de computadoras</em>. Pearson Educación.</li>
+                <li>Stallings, W. (2004). <em>Comunicaciones y Redes de Computadores</em>. Prentice Hall.</li>
+                <li>Kurose, J. F., & Ross, K. W. (2017). <em>Computer Networking: A Top-Down Approach</em>. Pearson.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 - Creado para el Repositorio de GitHub Pages. Enciclopedia Abierta de Telecomunicaciones.</p>
+        </footer>
+    </main>
+
 </body>
 </html>
